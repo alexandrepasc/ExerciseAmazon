@@ -1,26 +1,44 @@
 package com.ExerciseAmazon;
 
 import com.ExerciseAmazon.common.Browsers;
+import com.ExerciseAmazon.common.Settings;
+import com.ExerciseAmazon.common.XmlFile;
 
 import java.net.URLDecoder;
+import java.util.Map;
 
 public class Main {
 
   static Browsers browser;
   static boolean gui;
+  public static Settings settings = new Settings();
 
   public static void main(String[] args)
     throws Exception {
 
-    if (args != null) {
+    setConfig(args);
+  }
 
-      getArgs(args);
-    } else {
-      System.out.println("No arguments");
+  private static void setConfig(String[] args) {
+
+    try {
+
+      if (args != null) {
+
+        getArgs(args);
+      } else {
+
+        System.out.println("No arguments");
+      }
+
+      settings.setAppPath(getAppPath());
+
+      readSetting();
+
+    } catch (Exception e) {
+      e.printStackTrace();
     }
 
-//    System.out.println(
-//        URLDecoder.decode(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(), "UTF-8"));
   }
 
   private static void getArgs(String[] args) {
@@ -28,12 +46,12 @@ public class Main {
     for (int i = 0; i < args.length; i++) {
       if ((args[i].toLowerCase().equals("firefox")) || (args[i].toLowerCase().equals("chrome"))) {
 
-        browser = setBrowser(args[i].toLowerCase());
-        System.out.println(browser);
+        settings.setBrowser(setBrowser(args[i].toLowerCase()));
+        System.out.println(settings.getBrowser());
       } else if ((args[i].toLowerCase().equals("yes")) || args[i].toLowerCase().equals("no")) {
 
-        gui = setGui(args[i].toLowerCase());
-        System.out.println(gui);
+        settings.setGui(setGui(args[i].toLowerCase()));
+        System.out.println(settings.getGui());
       }
     }
   }
@@ -73,5 +91,26 @@ public class Main {
 
       return false;
     }
+  }
+
+  private static String getAppPath()
+    throws Exception {
+
+    String path = URLDecoder
+        .decode(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath(), "UTF-8");
+
+    path = path.substring(1, path.lastIndexOf("/") + 1);
+    System.out.println(path);
+
+    return path;
+  }
+
+  private static void readSetting()
+    throws Exception {
+
+    Map<String, String> data = XmlFile.read(settings.getAppPath(), "setting");
+
+    settings.setUser(data.get("email"));
+    settings.setPassword(data.get("pwd"));
   }
 }
