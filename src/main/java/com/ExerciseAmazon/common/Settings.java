@@ -2,9 +2,10 @@ package com.ExerciseAmazon.common;
 
 public class Settings {
 
-  private Browsers browser;
+  private String browser;
 
-  private boolean gui;
+  //private boolean gui;
+  private String gui;
 
   private String appPath;
 
@@ -12,19 +13,27 @@ public class Settings {
 
   private String password;
 
-  public Browsers getBrowser() {
+  public String getBrowser() {
     return browser;
   }
 
-  public void setBrowser(Browsers browser) {
+  public void setBrowser(String browser) {
     this.browser = browser;
   }
 
-  public boolean getGui() {
+//  public boolean getGui() {
+//    return gui;
+//  }
+//
+//  public void setGui(boolean gui) {
+//    this.gui = gui;
+//  }
+
+  public String getGui() {
     return gui;
   }
 
-  public void setGui(boolean gui) {
+  public void setGui(String gui) {
     this.gui = gui;
   }
 
