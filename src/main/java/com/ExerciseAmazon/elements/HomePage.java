@@ -4,5 +4,7 @@ import org.openqa.selenium.By;
 
 public class HomePage {
 
+  public static By tagHtml = By.tagName("html");
+
   public static By butProfileMenu = By.id("nav-link-accountList");
 }

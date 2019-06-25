@@ -72,7 +72,6 @@ public class PreTest {
   }
 
   public static void afterTest() {
-    //driver.close();
     driver.quit();
   }
 }
