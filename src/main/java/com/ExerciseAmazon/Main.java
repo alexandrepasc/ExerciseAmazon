@@ -27,7 +27,9 @@ public class Main {
 
     Map<String, String> options = new HashMap<>();
     options.put("browser", settings.getBrowser());
-    options.put("gui", "yes");
+    options.put("gui", settings.getGui());
+    options.put("userMail", settings.getUser());
+    options.put("userPassword", settings.getPassword());
 
     XmlSuite suite = new XmlSuite();
 
@@ -100,7 +102,10 @@ public class Main {
 
   private static Settings getArgs(String[] args, Settings settings) {
 
-    if (args.length > 0) {
+    settings.setBrowser("firefox");
+    settings.setGui("no");
+
+    //if (args.length > 0) {
 
       for (int i = 0; i < args.length; i++) {
         if ((args[i].toLowerCase().equals("firefox")) || (args[i].toLowerCase().equals("chrome"))) {
@@ -108,14 +113,15 @@ public class Main {
           settings.setBrowser(setBrowser(args[i].toLowerCase()));
         } else if ((args[i].toLowerCase().equals("yes")) || args[i].toLowerCase().equals("no")) {
 
+          //System.out.println(args[i]);
           settings.setGui(setGui(args[i].toLowerCase()));
         }
       }
-    } else {
+    //} else {
 
-      settings.setBrowser("firefox");
-      settings.setGui("no");
-    }
+      //settings.setBrowser("firefox");
+      //settings.setGui("no");
+    //}
 
     return settings;
   }
