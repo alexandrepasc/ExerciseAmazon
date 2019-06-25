@@ -33,14 +33,14 @@ public class Main {
 
     XmlSuite suite = new XmlSuite();
 
-    suite.setName("FOSeleniumTest");
+    suite.setName("Authentication");
     suite.setParameters(options);
 
     XmlTest overviewTest;
 
     List<XmlClass> overviewClasses;
     overviewTest = new XmlTest(suite);
-    overviewTest.setName("Auth");
+    overviewTest.setName("AuthSuite");
 
     overviewClasses = new ArrayList<>();
     overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.AuthTest"));
@@ -105,23 +105,16 @@ public class Main {
     settings.setBrowser("firefox");
     settings.setGui("no");
 
-    //if (args.length > 0) {
+    for (int i = 0; i < args.length; i++) {
+      if ((args[i].toLowerCase().equals("firefox")) || (args[i].toLowerCase().equals("chrome"))) {
 
-      for (int i = 0; i < args.length; i++) {
-        if ((args[i].toLowerCase().equals("firefox")) || (args[i].toLowerCase().equals("chrome"))) {
+        settings.setBrowser(setBrowser(args[i].toLowerCase()));
+      } else if ((args[i].toLowerCase().equals("yes")) || args[i].toLowerCase().equals("no")) {
 
-          settings.setBrowser(setBrowser(args[i].toLowerCase()));
-        } else if ((args[i].toLowerCase().equals("yes")) || args[i].toLowerCase().equals("no")) {
-
-          //System.out.println(args[i]);
-          settings.setGui(setGui(args[i].toLowerCase()));
-        }
+        //System.out.println(args[i]);
+        settings.setGui(setGui(args[i].toLowerCase()));
       }
-    //} else {
-
-      //settings.setBrowser("firefox");
-      //settings.setGui("no");
-    //}
+    }
 
     return settings;
   }

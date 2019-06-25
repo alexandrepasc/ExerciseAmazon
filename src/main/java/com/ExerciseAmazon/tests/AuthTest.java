@@ -25,7 +25,7 @@ public class AuthTest extends PreTest {
 
     beforeTest(browser, gui);
 
-    driver.get(Utils.getHomeUrl());
+    driver.get(Utils.getHomeUkUrl());
 
     element = new Elements(driver);
 
@@ -33,7 +33,7 @@ public class AuthTest extends PreTest {
   }
 
   @Parameters({ "userMail", "userPassword" })
-  @Test(enabled = true, invocationCount = 1)
+  @Test(enabled = false, invocationCount = 1)
   public void createUserWithExistingCredentialsTest(String user, String pwd)
     throws Exception {
 
@@ -41,7 +41,7 @@ public class AuthTest extends PreTest {
 
     element.click(LoginPage.butCreateAccount);
 
-    Assert.assertTrue(driver.getCurrentUrl().contains("register"));
+    Assert.assertTrue(driver.getCurrentUrl().contains("register"), ErrorText.PAGE.getText());
 
     element.sendKeys(RegisterPage.inputName, "Test Amazon");
 
@@ -57,6 +57,51 @@ public class AuthTest extends PreTest {
 
     Assert.assertEquals(element.getText(RegisterPage.labelFeedback),
         Translations.labelRegisterMailExistsFeedback(element), ErrorText.VALUE.getText());
+  }
+
+  @Parameters({ "userMail", "userPassword" })
+  @Test(enabled = true, invocationCount = 1)
+  public void loginWithWrongPassword(String user, String pwd)
+    throws Exception {
+
+    //0 driver.get(Utils.getHomeComUrl());
+
+    //element.click(HomePage.butProfileMenu);
+
+    element = new Elements(driver);
+
+    Assert.assertTrue(driver.getCurrentUrl().contains("signin"), ErrorText.PAGE.getText());
+
+    element.sendKeys(LoginPage.inputMail, user);
+    element.sendKeys(LoginPage.inputPassword, "qwefghbnm");
+    element.click(LoginPage.butLogin);
+
+    Assert.assertTrue(element.checkElement(LoginPage.divLoginFeedback), ErrorText.ELEMENT.getText());
+
+    Assert.assertEquals(element.getText(LoginPage.divLoginFeedbackSms), Translations.divLoginFeedback(element),
+        ErrorText.VALUE.getText());
+  }
+
+  @Parameters({ "userMail", "userPassword" })
+  @Test(enabled = true, invocationCount = 1)
+  public void loginWithRightPassword(String user, String pwd)
+    throws Exception {
+
+    //driver.get(Utils.getHomeComUrl());
+
+    //element.click(HomePage.butProfileMenu);
+
+    element = new Elements(driver);
+
+    Assert.assertTrue(driver.getCurrentUrl().contains("signin"), ErrorText.PAGE.getText());
+
+    element.sendKeys(LoginPage.inputMail, user);
+    element.sendKeys(LoginPage.inputPassword, pwd);
+    element.click(LoginPage.butLogin);
+
+    Assert.assertTrue(element.checkElement(HomePage.labelProfileMenuName), ErrorText.ELEMENT.getText());
+
+    Assert.assertNotEquals(element.getText(HomePage.labelProfileMenuName), "Sign in", ErrorText.VALUE.getText());
   }
 
   @AfterMethod(alwaysRun = true)
