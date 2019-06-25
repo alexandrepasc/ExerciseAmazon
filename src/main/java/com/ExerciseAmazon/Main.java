@@ -31,24 +31,32 @@ public class Main {
     options.put("userMail", settings.getUser());
     options.put("userPassword", settings.getPassword());
 
-    XmlSuite suite = new XmlSuite();
-
-    suite.setName("Authentication");
-    suite.setParameters(options);
-
     XmlTest overviewTest;
-
     List<XmlClass> overviewClasses;
-    overviewTest = new XmlTest(suite);
-    overviewTest.setName("AuthSuite");
 
+    XmlSuite suiteAuth = new XmlSuite();
+    suiteAuth.setName("Authentication");
+    suiteAuth.setParameters(options);
+
+    overviewTest = new XmlTest(suiteAuth);
+    overviewTest.setName("AuthSuite");
     overviewClasses = new ArrayList<>();
     overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.AuthTest"));
+    overviewTest.setXmlClasses(overviewClasses);
 
+    XmlSuite suiteSearch = new XmlSuite();
+    suiteSearch.setName("Search");
+    suiteSearch.setParameters(options);
+
+    overviewTest = new XmlTest(suiteSearch);
+    overviewTest.setName("SearchSuite");
+    overviewClasses = new ArrayList<>();
+    overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.SearchTest"));
     overviewTest.setXmlClasses(overviewClasses);
 
     List<XmlSuite> suites = new ArrayList<>();
-    suites.add(suite);
+    suites.add(suiteAuth);
+    suites.add(suiteSearch);
 
     TestNG testNG = new TestNG();
     testNG.setXmlSuites(suites);
