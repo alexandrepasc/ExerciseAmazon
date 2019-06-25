@@ -37,8 +37,8 @@ public class XmlFile {
           for (int x = 1; x < nList_.getLength(); x++) {
             if (nList_.item(x).getNodeType() == Node.ELEMENT_NODE) {
 
-              System.out.println(nList_.item(x).getNodeName());
-              System.out.println(nList_.item(x).getTextContent());
+//              System.out.println(nList_.item(x).getNodeName());
+//              System.out.println(nList_.item(x).getTextContent());
 
               data.put(nList_.item(x).getNodeName(), nList_.item(x).getTextContent());
             }
