@@ -7,9 +7,11 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//TODO Need to check if it could work
 public class TestSuite {
 
   private String suiteName;
@@ -24,9 +26,13 @@ public class TestSuite {
 
   private List<XmlSuite> suites;
 
-  TestSuite() {
+  private Settings settings;
+
+  public TestSuite(Settings settings) {
 
     this.suite = new XmlSuite();
+
+    this.settings = settings;
   }
 
   public void setSuites() {
@@ -40,6 +46,12 @@ public class TestSuite {
 
     List<XmlClass> overviewClasses = new ArrayList<>();
     XmlTest overviewTest;
+
+    Map<String, String> options = new HashMap<>();
+    options.put("browser", "firefox");
+    options.put("gui", "no");
+
+    suite.setParameters(options);
 
     for (Map.Entry<String, String> entry : getTestPack().entrySet()) {
 
