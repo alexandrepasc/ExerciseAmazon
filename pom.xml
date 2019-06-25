@@ -90,6 +90,8 @@
                             <tasks>
                                 <echo>Using env.test.properties</echo>
                                 <copy file="setting.xml" tofile="${basedir}/target/setting.xml"/>
+                                <copy file="geckodriver.exe" tofile="${basedir}/target/geckodriver.exe"/>
+                                <copy file="chromedriver.exe" tofile="${basedir}/target/chromedriver.exe"/>
                             </tasks>
                         </configuration>
                     </execution>
