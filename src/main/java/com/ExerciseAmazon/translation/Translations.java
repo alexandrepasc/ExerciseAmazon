@@ -32,4 +32,17 @@ public class Translations {
         return null;
     }
   }
+
+  public static String divLoginFeedback(Elements element)
+    throws Exception {
+
+    switch (getLanguage(element)) {
+      case PT:
+        return "";
+      case EN:
+        return "Your password is incorrect";
+      default:
+        return null;
+    }
+  }
 }
