@@ -33,6 +33,7 @@ public class Utils {
     }
   }
 
+  //TODO Check the view to add phone after login
   public static void doLogin(String user, String pwd, Elements element)
     throws Exception {
 
