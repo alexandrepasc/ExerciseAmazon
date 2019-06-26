@@ -1,5 +1,6 @@
 package com.ExerciseAmazon.common;
 
+import com.ExerciseAmazon.elements.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -30,6 +31,22 @@ public class Utils {
         wait.until(ExpectedConditions.elementToBeClickable(by_));
         break;
     }
+  }
+
+  public static void doLogin(String user, String pwd, Elements element)
+    throws Exception {
+
+    for (int i = 0; i < user.length(); i++) {
+      element.sendKeys(LoginPage.inputMail, Character.toString(user.charAt(i)));
+      Thread.sleep(150);
+    }
+
+    for (int i = 0; i < pwd.length(); i++) {
+      element.sendKeys(LoginPage.inputPassword, Character.toString(pwd.charAt(i)));
+      Thread.sleep(150);
+    }
+
+    element.click(LoginPage.butLogin);
   }
 
   public static String getHomeUkUrl() {
