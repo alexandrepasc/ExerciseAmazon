@@ -24,6 +24,7 @@ public class CommentsTest extends PreTest {
     driver.get(Utils.getHomeUkUrl());
   }
 
+  //TODO My account doesnt have eligibility to post a comment
   @Parameters({ "userMail", "userPassword" })
   @Test(enabled = true, invocationCount = 1)
   public void addCommentTest(String user, String pwd)
