@@ -54,9 +54,20 @@ public class Main {
     overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.SearchTest"));
     overviewTest.setXmlClasses(overviewClasses);
 
+    XmlSuite suiteComments = new XmlSuite();
+    suiteComments.setName("Comments");
+    suiteComments.setParameters(options);
+
+    overviewTest = new XmlTest(suiteComments);
+    overviewTest.setName("CommentsSuite");
+    overviewClasses = new ArrayList<>();
+    overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.CommentsTest"));
+    overviewTest.setXmlClasses(overviewClasses);
+
     List<XmlSuite> suites = new ArrayList<>();
     suites.add(suiteAuth);
     suites.add(suiteSearch);
+    suites.add(suiteComments);
 
     TestNG testNG = new TestNG();
     testNG.setXmlSuites(suites);
