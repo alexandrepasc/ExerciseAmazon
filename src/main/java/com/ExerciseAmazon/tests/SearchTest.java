@@ -1,6 +1,7 @@
 package com.ExerciseAmazon.tests;
 
 import com.ExerciseAmazon.common.Elements;
+import com.ExerciseAmazon.common.ErrorText;
 import com.ExerciseAmazon.common.PreTest;
 import com.ExerciseAmazon.common.Utils;
 import com.ExerciseAmazon.elements.HomePage;
@@ -106,6 +107,67 @@ public class SearchTest extends PreTest {
       }
     }
     //System.out.println("page");
+
+    return false;
+  }
+
+  @Test(enabled = true, invocationCount = 1)
+  public void searchReviewFor1Star()
+    throws Exception {
+
+    driver.get("https://www.amazon.co.uk/Chasing-Excellence-Building-Fittest-Athletes/product-reviews/1619617277/ref=cm"
+        + "_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews");
+
+    element = new Elements(driver);
+
+    element.click(ReviewsPage.butFilterStars);
+    element.click(ReviewsPage.listFilterStars1Star);
+
+    Assert.assertTrue(element.getText(ReviewsPage.labelResultNumber).contains("reviews"), ErrorText.VALUE.getText());
+  }
+
+  @Test(enabled = true, invocationCount = 1)
+  public void searchReviewForDate()
+    throws Exception {
+
+    driver.get("https://www.amazon.co.uk/Chasing-Excellence-Building-Fittest-Athletes/product-reviews/1619617277/ref=cm"
+        + "_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews");
+
+    element = new Elements(driver);
+
+    while (!scrollReviewsPage()) {
+
+      if (element.getElement(ReviewsPage.butNext).isEnabled()) {
+
+        element.click(ReviewsPage.butNext);
+      }
+    }
+  }
+
+  private boolean scrollReviewsPage()
+    throws Exception {
+
+    driver.navigate().refresh();
+
+    element = new Elements(driver);
+
+    WebElement[] elements;
+
+    elements = element.getElements(driver, ReviewsPage.listResultsItems);
+
+    String aux;
+    for (WebElement elem : elements) {
+
+      aux = elem.findElement(ReviewsPage.listResultsItemsDate).getText();
+
+      if (aux.contains("17 September 2017")) {
+
+        System.out.println("found");
+
+        Assert.assertTrue(true);
+        return true;
+      }
+    }
 
     return false;
   }
