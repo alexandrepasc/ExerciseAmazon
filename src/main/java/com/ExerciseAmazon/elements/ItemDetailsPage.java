@@ -9,4 +9,6 @@ public class ItemDetailsPage {
   public static By butPopupKindleClose = By.cssSelector("#a-popover-2 > div > header > button");
 
   public static By labelTitle = By.id("productTitle");
+
+  public static By butAllReviews = By.cssSelector("#reviews-medley-footer > div.a-row.a-spacing-large > a");
 }
