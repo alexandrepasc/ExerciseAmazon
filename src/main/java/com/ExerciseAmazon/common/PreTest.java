@@ -24,7 +24,7 @@ public class PreTest {
         break;
     }
 
-    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
     driver.manage().window().setSize(new Dimension(1366, 768));
   }
