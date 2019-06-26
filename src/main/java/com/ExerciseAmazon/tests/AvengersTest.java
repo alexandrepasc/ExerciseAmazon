@@ -8,13 +8,23 @@ import com.ExerciseAmazon.elements.HomePage;
 import com.ExerciseAmazon.elements.ItemDetailsPage;
 import com.ExerciseAmazon.elements.SearchResultPage;
 import com.ExerciseAmazon.elements.VideoPage;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Interaction;
+import org.openqa.selenium.interactions.PointerInput;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.File;
+import java.time.Duration;
 
 public class AvengersTest extends PreTest {
 
@@ -94,6 +104,7 @@ public class AvengersTest extends PreTest {
         ErrorText.VALUE.getText());
   }
 
+  //TODO This is not the correct way to do this
   @Test(enabled = true, invocationCount = 1)
   public void trailerTest()
     throws Exception {
@@ -103,15 +114,34 @@ public class AvengersTest extends PreTest {
 
     element = new Elements(driver);
 
+//    Actions builder = new Actions(driver);
+//    Action drawAction = builder.moveToElement(element.getElement(ItemDetailsPage.butVideoWatchTrailer),
+//        0, 0) //start points x axis and y axis.
+//        .click()
+//        .build();
+//    drawAction.perform();
+
+    Utils.waitingUntil(driver, ItemDetailsPage.butVideoWatchTrailer, 20, Utils.WaitUntil.CLICKABLE);
     element.click(ItemDetailsPage.butVideoWatchTrailer);
 
     Utils.waitingUntil(driver, VideoPage.containerVideo, 20, Utils.WaitUntil.VISIBILITY);
-    Utils.waitingUntil(driver, VideoPage.butForward, 20, Utils.WaitUntil.CLICKABLE);
+    Utils.waitingUntil(driver, VideoPage.labelLoadVideo, 20, Utils.WaitUntil.ATTRIBUTE, "style", "display: none;");
 
-    Assert.assertTrue(element.checkElement(VideoPage.butForward));
-    element.click(VideoPage.butForward);
+//    Actions builder = new Actions(driver);
+//    Action drawAction = builder.moveToElement(element.getElement(VideoPage.butPause),
+//        0, 0) //start points x axis and y axis.
+//        .click()
+//        .build();
+//    drawAction.perform();
 
-    element.click(VideoPage.butPause);
+//    Assert.assertTrue(element.checkElement(VideoPage.butForward));
+//    element.click(VideoPage.butForward);
+//
+//    element.click(VideoPage.butPause);
+
+    Thread.sleep(10000);
+    File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    FileUtils.copyFile(scrFile, new File("screenshot.png"));
   }
 
   @AfterMethod(alwaysRun = true)
