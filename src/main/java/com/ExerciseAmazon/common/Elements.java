@@ -54,6 +54,21 @@ public class Elements {
     }
   }
 
+  public static WebElement[] getElements(WebDriver driver, By by) {
+    try {
+
+      return driver.findElements(by).toArray(new WebElement[0]);
+
+    } catch (StaleElementReferenceException e) {
+
+      e.printStackTrace();
+      return null;
+
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
   public static String getText(By by) {
     try {
 
