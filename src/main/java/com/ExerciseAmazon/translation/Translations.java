@@ -45,4 +45,43 @@ public class Translations {
         return null;
     }
   }
+
+  public static String selectSearchInFitness(Elements element)
+    throws Exception {
+
+    switch (getLanguage(element)) {
+      case PT:
+        return "";
+      case EN:
+        return "Fitness";
+      default:
+        return null;
+    }
+  }
+
+  public static String labelFeatureBrandTopBrandTitle(Elements element)
+    throws Exception {
+
+    switch (getLanguage(element)) {
+      case PT:
+        return "";
+      case EN:
+        return "Top Brands";
+      default:
+        return null;
+    }
+  }
+
+  public static String labelFeatureBrandATitle(Elements element)
+      throws Exception {
+
+    switch (getLanguage(element)) {
+      case PT:
+        return "";
+      case EN:
+        return "A";
+      default:
+        return null;
+    }
+  }
 }
