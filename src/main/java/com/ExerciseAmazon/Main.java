@@ -37,7 +37,6 @@ public class Main {
     XmlSuite suiteAuth = new XmlSuite();
     suiteAuth.setName("Authentication");
     suiteAuth.setParameters(options);
-
     overviewTest = new XmlTest(suiteAuth);
     overviewTest.setName("AuthSuite");
     overviewClasses = new ArrayList<>();
@@ -47,7 +46,6 @@ public class Main {
     XmlSuite suiteSearch = new XmlSuite();
     suiteSearch.setName("Search");
     suiteSearch.setParameters(options);
-
     overviewTest = new XmlTest(suiteSearch);
     overviewTest.setName("SearchSuite");
     overviewClasses = new ArrayList<>();
@@ -57,17 +55,26 @@ public class Main {
     XmlSuite suiteComments = new XmlSuite();
     suiteComments.setName("Comments");
     suiteComments.setParameters(options);
-
     overviewTest = new XmlTest(suiteComments);
     overviewTest.setName("CommentsSuite");
     overviewClasses = new ArrayList<>();
     overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.CommentsTest"));
     overviewTest.setXmlClasses(overviewClasses);
 
+    XmlSuite suiteAvengers = new XmlSuite();
+    suiteAvengers.setName("Avengers");
+    suiteAvengers.setParameters(options);
+    overviewTest = new XmlTest(suiteAvengers);
+    overviewTest.setName("AvengersSuite");
+    overviewClasses = new ArrayList<>();
+    overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.AvengersTest"));
+    overviewTest.setXmlClasses(overviewClasses);
+
     List<XmlSuite> suites = new ArrayList<>();
     suites.add(suiteAuth);
     suites.add(suiteSearch);
     suites.add(suiteComments);
+    suites.add(suiteAvengers);
 
     TestNG testNG = new TestNG();
     testNG.setXmlSuites(suites);
