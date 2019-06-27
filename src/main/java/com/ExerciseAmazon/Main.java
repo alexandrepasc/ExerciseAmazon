@@ -79,12 +79,22 @@ public class Main {
     overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.ShopDepartTest"));
     overviewTest.setXmlClasses(overviewClasses);
 
+    XmlSuite suiteSearchJob = new XmlSuite();
+    suiteSearchJob.setName("SearchJob");
+    suiteSearchJob.setParameters(options);
+    overviewTest = new XmlTest(suiteSearchJob);
+    overviewTest.setName("SearchJobSuite");
+    overviewClasses = new ArrayList<>();
+    overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.SearchJobTest"));
+    overviewTest.setXmlClasses(overviewClasses);
+
     List<XmlSuite> suites = new ArrayList<>();
     suites.add(suiteAuth);
     suites.add(suiteSearch);
     suites.add(suiteComments);
     suites.add(suiteAvengers);
     suites.add(suiteShopBy);
+    suites.add(suiteSearchJob);
 
     TestNG testNG = new TestNG();
     testNG.setXmlSuites(suites);
