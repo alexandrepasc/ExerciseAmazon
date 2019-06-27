@@ -70,11 +70,21 @@ public class Main {
     overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.AvengersTest"));
     overviewTest.setXmlClasses(overviewClasses);
 
+    XmlSuite suiteShopBy = new XmlSuite();
+    suiteShopBy.setName("Avengers");
+    suiteShopBy.setParameters(options);
+    overviewTest = new XmlTest(suiteShopBy);
+    overviewTest.setName("AvengersSuite");
+    overviewClasses = new ArrayList<>();
+    overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.AvengersTest"));
+    overviewTest.setXmlClasses(overviewClasses);
+
     List<XmlSuite> suites = new ArrayList<>();
     suites.add(suiteAuth);
     suites.add(suiteSearch);
     suites.add(suiteComments);
     suites.add(suiteAvengers);
+    suites.add(suiteShopBy);
 
     TestNG testNG = new TestNG();
     testNG.setXmlSuites(suites);
