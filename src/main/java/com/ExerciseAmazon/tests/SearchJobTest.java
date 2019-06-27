@@ -11,14 +11,14 @@ public class SearchJobTest extends PreTest {
 
   private Elements element;
 
-  @Parameters({ "browser", "gui", "userMail", "userPassword" })
+  @Parameters({ "browser", "gui" })
   @BeforeMethod(alwaysRun = true)
-  public void beforeMethod(String browser, String gui, String user, String pwd)
+  public void beforeMethod(String browser, String gui)
       throws Exception {
 
     beforeTest(browser, gui);
 
-    driver.get(Utils.getHomeUkUrl());
+    driver.get(Utils.getJobSearchUrl());
   }
 
   @AfterMethod(alwaysRun = true)
