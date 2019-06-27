@@ -10,11 +10,15 @@ public class HomePage {
 
   public static By labelProfileMenuName = By.cssSelector("#nav-link-accountList > span.nav-line-1");
 
+  public static By butDeliver = By.id("nav-global-location-slot");
+
   public static By inputSearch = By.id("twotabsearchtextbox");
 
   public static By butSearch = By.cssSelector("#nav-search > form > div.nav-right > div > input");
 
   public static By selectSearchIn = By.id("searchDropdownBox");
+
+  public static By labelSearchIn = By.cssSelector("#nav-search-dropdown-card > div > div");
 
   public static By selectSearchInList = By.cssSelector("#searchDropdownBox > option");
 
