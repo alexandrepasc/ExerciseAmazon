@@ -71,12 +71,12 @@ public class Main {
     overviewTest.setXmlClasses(overviewClasses);
 
     XmlSuite suiteShopBy = new XmlSuite();
-    suiteShopBy.setName("Avengers");
+    suiteShopBy.setName("ShopBy");
     suiteShopBy.setParameters(options);
     overviewTest = new XmlTest(suiteShopBy);
-    overviewTest.setName("AvengersSuite");
+    overviewTest.setName("ShopBySuite");
     overviewClasses = new ArrayList<>();
-    overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.AvengersTest"));
+    overviewClasses.add(new XmlClass("com.ExerciseAmazon.tests.ShopDepartTest"));
     overviewTest.setXmlClasses(overviewClasses);
 
     List<XmlSuite> suites = new ArrayList<>();
