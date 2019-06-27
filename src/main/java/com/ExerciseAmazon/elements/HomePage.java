@@ -26,6 +26,8 @@ public class HomePage {
 
   public static By selectShopBy = By.cssSelector("#nav-link-shopall");
 
+  public static By selectSgopByArrow = By.cssSelector("#nav-link-shopall > span.nav-line-2 > span");
+
   public static By selectShopByList = By.cssSelector("#nav-flyout-shopAll > div.nav-template.nav-flyout-content.nav-tpl"
       + "-itemList");
 

@@ -13,4 +13,10 @@ public class ShopByDepartmentPage {
 
   public static By butFeatureBrandA = By
       .cssSelector("#indexBarHeader > div > div > span:nth-child(4) > a:nth-child(1)");
+
+  public static By containerFeatureBrand = By.id("refinementList");
+
+  public static By columnsFeatureBrand = By.cssSelector("#ref_1632651031 > ul");
+
+  public static By itemsFeatureBrand = By.cssSelector("li");
 }
