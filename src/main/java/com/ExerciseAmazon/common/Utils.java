@@ -1,5 +1,6 @@
 package com.ExerciseAmazon.common;
 
+import com.ExerciseAmazon.elements.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,19 +18,48 @@ public class Utils {
 
   public enum WaitUntil {
     VISIBILITY,
-    CLICKABLE
+    CLICKABLE,
+    ATTRIBUTE
   }
 
-  public static void waitingUntil(WebDriver driver_, By by_, int time_, WaitUntil what_) {
-    WebDriverWait wait = new WebDriverWait(driver_, time_);
-    switch (what_) {
+  public static void waitingUntil(WebDriver driver, By by, int time, WaitUntil what) {
+    WebDriverWait wait = new WebDriverWait(driver, time);
+    switch (what) {
       case VISIBILITY:
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by_));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         break;
       case CLICKABLE:
-        wait.until(ExpectedConditions.elementToBeClickable(by_));
+        wait.until(ExpectedConditions.elementToBeClickable(by));
         break;
     }
+  }
+
+  public static void waitingUntil(WebDriver driver, By by, int time, WaitUntil what, String attribute,
+      String attribValue) {
+    WebDriverWait wait = new WebDriverWait(driver, time);
+    switch (what) {
+      case ATTRIBUTE:
+        wait.until(ExpectedConditions.attributeContains(by, attribute, attribValue));
+        break;
+    }
+  }
+
+  //TODO Check the view to add phone after login
+  public static void doLogin(String user, String pwd, Elements element)
+    throws Exception {
+
+    for (int i = 0; i < user.length(); i++) {
+      element.sendKeys(LoginPage.inputMail, Character.toString(user.charAt(i)));
+      Thread.sleep(100);
+    }
+
+    for (int i = 0; i < pwd.length(); i++) {
+      element.sendKeys(LoginPage.inputPassword, Character.toString(pwd.charAt(i)));
+      Thread.sleep(100);
+    }
+
+    Thread.sleep(100);
+    element.click(LoginPage.butLogin);
   }
 
   public static String getHomeUkUrl() {

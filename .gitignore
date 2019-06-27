@@ -31,3 +31,4 @@ test-output
 hs_err_pid*
 
 /setting.xml
+*.png

@@ -15,4 +15,8 @@ public class LoginPage {
   public static By divLoginFeedbackSms = By.cssSelector("#auth-error-message-box > div > div > ul > li > span");
 
   public static By butCreateAccount = By.id("createAccountSubmit");
+
+  public static By labelAddMobileTitle = By.cssSelector("#auth-account-fixup-phone-form > div > h1");
+
+  public static By butAddMobileNotnow = By.id("ap-account-fixup-phone-skip-link");
 }
