@@ -1,9 +1,11 @@
 package com.ExerciseAmazon.tests;
 
 import com.ExerciseAmazon.common.Elements;
+import com.ExerciseAmazon.common.ErrorText;
 import com.ExerciseAmazon.common.PreTest;
 import com.ExerciseAmazon.common.Utils;
 import com.ExerciseAmazon.elements.JobSearchHomePage;
+import com.ExerciseAmazon.elements.JobSearchResultsPage;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -39,7 +41,7 @@ public class SearchJobTest extends PreTest {
     //return Normalizer.normalize(string, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     WebElement[] results = element.getElement(JobSearchHomePage.selectLocation)
         .findElements(JobSearchHomePage.selectLocationList).toArray(new WebElement[0]);
-    System.out.println(results.length);
+
     for (WebElement result : results) {
 
       if (StringUtils.stripAccents(search).toLowerCase().contains(StringUtils
@@ -52,10 +54,32 @@ public class SearchJobTest extends PreTest {
           break;
         }
       }
-      //System.out.println("result: " + result.getText());
-
-      //System.out.println("title2: " + result.findElement(JobSearchHomePage.selectLocationTitle2).getText());
     }
+
+    Utils.waitingUntil(driver, JobSearchResultsPage.containerResults, 20, Utils.WaitUntil.VISIBILITY);
+
+    Assert.assertTrue(driver.getCurrentUrl().contains("search?"), ErrorText.PAGE.getText());
+
+    Assert.assertFalse(element.checkElement(JobSearchResultsPage.containerEmptySearch), "No results.");
+    Assert.assertTrue(element.checkElement(JobSearchResultsPage.labelResultNumber), "No results.");
+  }
+
+  @Test(enabled = true, invocationCount = 1)
+  public void changeDistanceTest()
+    throws Exception {
+
+    driver.get(Utils.getJobSearchUrl()
+        .concat("/search?base_query=&loc_query=Setúbal%2C+Portugal&latitude=38.5247&longitude=-8.89423"));
+
+    element = new Elements(driver);
+
+    Utils.waitingUntil(driver, JobSearchResultsPage.containerRadius, 20, Utils.WaitUntil.VISIBILITY);
+    element.click(JobSearchResultsPage.butRadius5Mi);
+
+    Utils.waitingUntil(driver, JobSearchResultsPage.containerResults, 20, Utils.WaitUntil.VISIBILITY);
+
+    Assert.assertTrue(element.checkElement(JobSearchResultsPage.containerEmptySearch), "We got results.");
+    Assert.assertFalse(element.checkElement(JobSearchResultsPage.labelResultNumber), "We got results.");
   }
 
   @AfterMethod(alwaysRun = true)
