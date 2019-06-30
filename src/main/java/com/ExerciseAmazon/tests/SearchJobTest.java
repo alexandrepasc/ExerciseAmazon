@@ -6,6 +6,7 @@ import com.ExerciseAmazon.common.PreTest;
 import com.ExerciseAmazon.common.Utils;
 import com.ExerciseAmazon.elements.JobSearchHomePage;
 import com.ExerciseAmazon.elements.JobSearchResultsPage;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -80,6 +81,34 @@ public class SearchJobTest extends PreTest {
 
     Assert.assertTrue(element.checkElement(JobSearchResultsPage.containerEmptySearch), "We got results.");
     Assert.assertFalse(element.checkElement(JobSearchResultsPage.labelResultNumber), "We got results.");
+  }
+
+  @Test(enabled = true, invocationCount = 1)
+  public void searchSoftwareTest()
+    throws Exception {
+
+    element = new Elements(driver);
+
+    String search = "software";
+
+    element.sendKeys(JobSearchHomePage.inputSearch, search);
+
+    //Assert.assertTrue(element.checkElement(JobSearchHomePage.selectSearch), ErrorText.ELEMENT.getText());
+
+    WebElement[] results = element.getElement(JobSearchHomePage.selectSearch)
+        .findElements(JobSearchHomePage.selectSearchList).toArray(new WebElement[0]);
+
+    Assert.assertTrue(element.checkElement(results, 0));
+
+    for (WebElement result : results) {
+
+      if (result.getText().toLowerCase().contains("software Development")) {
+
+        System.out.println("Contains Software Development");
+        Assert.assertTrue(true);
+        break;
+      }
+    }
   }
 
   @AfterMethod(alwaysRun = true)
