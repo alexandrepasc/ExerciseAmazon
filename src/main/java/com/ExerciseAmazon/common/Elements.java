@@ -69,6 +69,21 @@ public class Elements {
     }
   }
 
+  public static WebElement[] getElements(WebElement[] elements, By by, int numb) {
+    try {
+
+      return elements[numb].findElements(by).toArray(new WebElement[0]);
+
+    } catch (StaleElementReferenceException e) {
+
+      e.printStackTrace();
+      return null;
+
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
   public static String getText(By by) {
     try {
 
@@ -355,6 +370,36 @@ public class Elements {
     }
   }
 
+  public static boolean isVisible(WebElement[] elements, int numbEle) {
+    try {
+
+      return elements[numbEle].isDisplayed();
+
+    } catch (StaleElementReferenceException e) {
+
+      e.printStackTrace();
+      return false;
+
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  public static boolean isVisible(WebElement[] elements, int numbEle, By by, int numbBy) {
+    try {
+
+      return getElements(elements, by, numbEle)[numbBy].isDisplayed();
+
+    } catch (StaleElementReferenceException e) {
+
+      e.printStackTrace();
+      return false;
+
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
   public static boolean isPresent(By by) {
     try {
 
@@ -375,6 +420,38 @@ public class Elements {
     try {
 
       getElements(by)[numb].getLocation();
+      return true;
+
+    } catch (StaleElementReferenceException e) {
+
+      e.printStackTrace();
+      return false;
+
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  public static boolean isPresent(WebElement[] elements, int numbEle) {
+    try {
+
+      elements[numbEle].getLocation();
+      return true;
+
+    } catch (StaleElementReferenceException e) {
+
+      e.printStackTrace();
+      return false;
+
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  public static boolean isPresent(WebElement[] elements, int numbEle, By by, int numbBy) {
+    try {
+
+      getElements(elements, by, numbEle)[numbBy].getLocation();
       return true;
 
     } catch (StaleElementReferenceException e) {
@@ -418,6 +495,29 @@ public class Elements {
       }
 
       if (!isVisible(by, numb)) {
+        return false;
+      }
+
+      return true;
+
+    } catch (StaleElementReferenceException e) {
+
+      e.printStackTrace();
+      return false;
+
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  public static boolean checkElement(WebElement[] elements, int numbEle) {
+    try {
+
+      if (!isPresent(elements, numbEle)) {
+        return false;
+      }
+
+      if (!isVisible(elements, numbEle)) {
         return false;
       }
 
