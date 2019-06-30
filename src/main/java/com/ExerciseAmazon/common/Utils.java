@@ -71,4 +71,9 @@ public class Utils {
 
     return "https://www.amazon.com";
   }
+
+  public static String getJobSearchUrl() {
+
+    return "https://www.amazon.jobs/en-gb";
+  }
 }
