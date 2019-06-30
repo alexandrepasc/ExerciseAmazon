@@ -111,6 +111,91 @@ public class SearchJobTest extends PreTest {
     }
   }
 
+  @Test(enabled = true, invocationCount = 1)
+  public void searchArchitect()
+    throws Exception {
+
+    String searchCategory = "Solutions Architect";
+    String searchCity = "San Francisco";
+
+    element = new Elements(driver);
+
+    element.sendKeys(JobSearchHomePage.inputSearch, "software");
+
+    WebElement[] results = element.getElement(JobSearchHomePage.selectSearch)
+        .findElements(JobSearchHomePage.selectSearchList).toArray(new WebElement[0]);
+
+    Assert.assertTrue(element.checkElement(results, 0));
+
+    for (WebElement result : results) {
+
+      if (result.getText().toLowerCase().contains("software Development")) {
+
+        result.click();
+
+        break;
+      }
+    }
+
+    element.click(JobSearchHomePage.butSearch);
+
+    Utils.waitingUntil(driver, JobSearchResultsPage.containerResults, 20, Utils.WaitUntil.VISIBILITY);
+
+    while (!scrollCategory(searchCategory)) {
+
+      element.click(JobSearchResultsPage.butCategoryMore);
+    }
+
+    while (!scrollCities(searchCity)) {
+
+      element.click(JobSearchResultsPage.butCitiesMore);
+    }
+
+    Assert.assertTrue(element.checkElement(JobSearchResultsPage.labelResultNumber), ErrorText.ELEMENT.getText());
+  }
+
+  private boolean scrollCategory(String search)
+    throws Exception {
+
+    element = new Elements(driver);
+
+    WebElement[] categories = element.getElements(JobSearchResultsPage.selectCategoryList);
+
+    for (WebElement category : categories) {
+
+      if (category.findElement(JobSearchResultsPage.selectCategoryText).getText().toLowerCase()
+          .contains(search.toLowerCase())) {
+
+        category.click();
+
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  private boolean scrollCities(String search)
+    throws Exception {
+
+    element = new Elements(driver);
+
+    WebElement[] cities = element.getElements(JobSearchResultsPage.selectCitiesList);
+
+    for (WebElement city : cities) {
+
+      if (city.findElement(JobSearchResultsPage.selectCitiesText).getText().toLowerCase()
+          .contains(search.toLowerCase())) {
+
+        city.click();
+
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   @AfterMethod(alwaysRun = true)
   public void afterMethod()
     throws Exception {
