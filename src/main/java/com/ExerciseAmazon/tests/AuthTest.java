@@ -33,7 +33,7 @@ public class AuthTest extends PreTest {
   }
 
   @Parameters({ "userMail", "userPassword" })
-  @Test(enabled = false, invocationCount = 1)
+  @Test(enabled = true, invocationCount = 1)
   public void createUserWithExistingCredentialsTest(String user, String pwd)
     throws Exception {
 
@@ -47,9 +47,9 @@ public class AuthTest extends PreTest {
 
     element.sendKeys(RegisterPage.inputMail, user);
 
-    element.sendKeys(RegisterPage.inputPassword, pwd);
+    element.sendKeys(RegisterPage.inputPassword, "123123123");
 
-    element.sendKeys(RegisterPage.inputPasswordCheck, pwd);
+    element.sendKeys(RegisterPage.inputPasswordCheck, "123123123");
 
     element.click(RegisterPage.butContinue);
 
