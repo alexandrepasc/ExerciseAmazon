@@ -21,6 +21,13 @@ Devemos configurar os dados da seguinte forma: <br><br>
     \<pwd>password\</pwd> <br>
 \</user> <br>
 <br><br>
+Two of the tests will create screen shots at the root folder of the aplication. For the Avenger suite the file is 
+"videoScreenshot.png", for the brand search the file is "brandScreenshot.png". <br>
+<br><br>
+Para a aplicação correr também é necessário ter os drivers na pasta. O geckodriver é o driver para o Firefox, e o 
+chromedriver para o Chrome. Existe para cada um deles uma versão windows e uma para linux, ao correr os testes com o 
+IDE não devemos ter a versão linux e a windows no projecto. <br>
+<br><br>
 Se quisermos compilar a aplicação, devemos instalar a aplicação Maven. <br>
 Na raiz do projecto executar o seguinte comando: <br>
 mvn clean install <br>
