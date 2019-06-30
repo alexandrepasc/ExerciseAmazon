@@ -141,7 +141,7 @@ public class AvengersTest extends PreTest {
 
     Thread.sleep(10000);
     File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    FileUtils.copyFile(scrFile, new File("screenshot.png"));
+    FileUtils.copyFile(scrFile, new File("videoScreenshot.png"));
   }
 
   @AfterMethod(alwaysRun = true)
