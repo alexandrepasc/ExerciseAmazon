@@ -26,7 +26,7 @@ public class CommentsTest extends PreTest {
 
   //TODO My account doesnt have eligibility to post a comment
   @Parameters({ "userMail", "userPassword" })
-  @Test(enabled = true, invocationCount = 1)
+  @Test(enabled = false, invocationCount = 1)
   public void addCommentTest(String user, String pwd)
     throws Exception {
 
