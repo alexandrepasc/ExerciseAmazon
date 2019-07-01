@@ -36,9 +36,9 @@ public class ShopDepartTest extends PreTest {
 
     element = new Elements(driver);
 
-    //element.click(HomePage.butProfileMenu);
+    element.click(HomePage.butProfileMenu);
 
-    //Utils.doLogin(user, pwd, element);
+    Utils.doLogin(user, pwd, element);
   }
 
   @Test(enabled = true, invocationCount = 1)
