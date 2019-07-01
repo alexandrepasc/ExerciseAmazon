@@ -1,5 +1,16 @@
 # ExerciseAmazon
 
+Durante o desenvolvimento dos testes, deparei-me com alguns problemas. <br><br>
+O teste do trailer não consigo que corra com o Firefox, quando o browser chega à parte do vídeo avisa que está a 
+instalar pluins para correr o vídeo, mas não os instala. <br><br>
+A minha conta da Amazon não tem os requisitos para criar reviews a produtos, logo não consegui desenvolver o teste para 
+esse Test Case. O teste "addCommentTest" foi desativado. <br><br>
+Também tem havido contratempos com "captcha" no login, ecrãs para adicionar telemóvel esporadicamente, popups com 
+publicidade a e-books. Não tenho conseguido prevenir todos estes problemas, o que faz que haja testes a falhar sem que 
+realmente o componente em teste tenha problemas. <br><br>
+Os testes têm corrido melhor com o Chrome e com GUI, com o Firefox, e em modo headless (em ambos os browsers) têm tido 
+vários problemas. <br>
+<br><br>
 Este projeto foi desenvolvido em ambiente Windows, mas está preparado para também correr em Linux. Na descrição está 
 descrito algumas alteraçoes que se deve fazer. <br><br>
 Para correr o exercício deve ter instalado o Java Running Enviornment 8. <br>
@@ -13,12 +24,6 @@ não. <br><br>
 `java -jar ExerciseAmazon.jar chrome` <br>
 `java -jar ExerciseAmazon.jar yes` <br>
 `java -jar ExerciseAmazon.jar firefox yes` <br>
-<br><br>
-Durante o desenvolvimento dos testes, deparei-me com alguns problemas. <br>
-O teste do trailer não consigo que corra com o Firefox, quando o browser chega à parte do vídeo avisa que está a 
-instalar pluins para correr o vídeo, mas não os instala. <br>
-A minha conta da Amazon não tem os requisitos para criar reviews a produtos, logo não consegui desenvolver o teste para 
-esse Test Case. <br>
 <br><br>
 Para alguns dos testes é necessário a existencia de uma conta na Amazon, essa conta deve ser configurada no ficheiro 
 "setting.xml". Este ficheiro deve estar na mesma pasta que o ficheiro ".jar". <br>
