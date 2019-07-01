@@ -1,5 +1,7 @@
 # ExerciseAmazon
 
+Este projeto foi desenvolvido em ambiente Windows, mas está preparado para também correr em Linux. Na descrição está 
+descrito algumas alteraçoes que se deve fazer. <br>
 Para correr o exercício deve ter instalado o Java Running Enviornment 8. <br>
 Na linha de comandos executar a linha a baixo.<br>
 <br>
@@ -15,14 +17,14 @@ java -jar ExerciseAmazon.jar firefox yes <br>
 Para alguns dos testes é necessário a existencia de uma conta na Amazon, essa conta deve ser configurada no ficheiro 
 "setting.xml". Este ficheiro deve estar na mesma pasta que o ficheiro ".jar". <br>
 Devemos configurar os dados da seguinte forma: <br><br>
-\<?xml version="1.0" encoding="UTF-8"?> <br>
-\<user> <br>
-    \<email>user@mail.com\</email> <br>
-    \<pwd>password\</pwd> <br>
-\</user> <br>
+`<?xml version="1.0" encoding="UTF-8"?>` <br>
+`<user>` <br>
+    `<email>user@mail.com</email>` <br>
+    `<pwd>password</pwd>` <br>
+`</user>` <br>
 <br><br>
-Two of the tests will create screen shots at the root folder of the aplication. For the Avenger suite the file is 
-"videoScreenshot.png", for the brand search the file is "brandScreenshot.png". <br>
+Dois dos tests vão criar screen shots na pasta da aplicação. Para a suite do Avengers o ficheiro é "videoScreenshot.png"
+, para a pesquisa por Brand o ficheiro é "brandScreenshot.png". <br>
 <br><br>
 Para a aplicação correr também é necessário ter os drivers na pasta. O geckodriver é o driver para o Firefox, e o 
 chromedriver para o Chrome. Existe para cada um deles uma versão windows e uma para linux, ao correr os testes com o 
@@ -34,6 +36,28 @@ mvn clean install <br>
 Este comando vai compilar as classes, dependencias e criar uma pasta "target" e colocar nela dois ficheiros ".jar" da 
 aplicação. <br>
 Um desses ficheiros tem "-jar-with-dependencies" no nome, e é este que deve ser executado. <br>
+Para além de compilar e criar os .jar, o Maven vai copiar para a pasta os ficheiros necessários para a execução da 
+aplicação (drivers, e setting). <br>
+Caso se queira compilar e executar em Linux devemos alterar os drivers para as versões compativeis com o SO 
+(aplicações, versões e links descritos no final do documento). <br>
+E alterar no ficheiro de configuração do maven ("pom.xml") as linhas que copiam estes ficheiros na compilação. <br>
+`<plugin>` <br>
+     `<groupId>org.apache.maven.plugins</groupId>` <br>
+     `<artifactId>maven-antrun-plugin</artifactId>`<br>
+     `<executions>`<br>
+         `<execution>`<br>
+             `(code...)` <br>
+             `<configuration>`<br>
+                 `<tasks>`<br>
+                     `<echo>Using env.test.properties</echo>`<br>
+                     `<copy file="setting.xml" tofile="${basedir}/target/setting.xml"/>`<br>
+                     `<copy file="geckodriver.exe" tofile="${basedir}/target/geckodriver.exe"/>`<br>
+                     `<copy file="chromedriver.exe" tofile="${basedir}/target/chromedriver.exe"/>`<br>
+                 `</tasks>`<br>
+             `</configuration>`<br>
+         `</execution>`<br>
+     `</executions>`<br>
+`</plugin>`<br>
 <br><br>
 <b>Aplicações</b><br>
 Java 8u211 <br>
