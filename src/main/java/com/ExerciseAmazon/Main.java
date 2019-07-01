@@ -209,9 +209,12 @@ public class Main {
     if (path.contains("/classes/")) {
       path = path.substring(0, path.lastIndexOf("/ta"));
     }
-    //System.out.println(path.concat("/"));
 
-    return path.concat("/");
+    if (!Character.toString(path.charAt(path.length() - 1)).equals("/")) {
+      path = path.concat("/");
+    }
+
+    return path;
   }
 
   private static Settings readSetting(Settings settings)

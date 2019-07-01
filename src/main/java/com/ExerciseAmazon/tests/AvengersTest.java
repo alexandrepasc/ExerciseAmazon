@@ -8,15 +8,12 @@ import com.ExerciseAmazon.elements.HomePage;
 import com.ExerciseAmazon.elements.ItemDetailsPage;
 import com.ExerciseAmazon.elements.SearchResultPage;
 import com.ExerciseAmazon.elements.VideoPage;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Interaction;
-import org.openqa.selenium.interactions.PointerInput;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,7 +21,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.File;
-import java.time.Duration;
 
 public class AvengersTest extends PreTest {
 
@@ -141,7 +137,7 @@ public class AvengersTest extends PreTest {
 
     Thread.sleep(10000);
     File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    FileUtils.copyFile(scrFile, new File("screenshot.png"));
+    FileUtils.copyFile(scrFile, new File("videoScreenshot.png"));
   }
 
   @AfterMethod(alwaysRun = true)

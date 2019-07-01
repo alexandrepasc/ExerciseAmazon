@@ -8,6 +8,7 @@ import com.ExerciseAmazon.elements.HomePage;
 import com.ExerciseAmazon.elements.ItemDetailsPage;
 import com.ExerciseAmazon.elements.ReviewsPage;
 import com.ExerciseAmazon.elements.SearchResultPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -51,7 +52,7 @@ public class SearchTest extends PreTest {
 
       if (elements[i].getText().contains("Bergeron")) {
 
-        elements[i].findElement(By.className("a-link-normal")).click();
+        elements[i].findElement(SearchResultPage.listResultsImage).click();
 
         break;
       }
