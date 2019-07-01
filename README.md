@@ -12,7 +12,11 @@ Os testes têm corrido melhor com o Chrome e com GUI, com o Firefox, e em modo h
 vários problemas. <br>
 <br><br>
 Este projeto foi desenvolvido em ambiente Windows, mas está preparado para também correr em Linux. Na descrição está 
-descrito algumas alteraçoes que se deve fazer. <br><br>
+descrito algumas alterações que se deve fazer. <br>
+Este projecto tem uma release com versão Windows e Linux, pode ser feito o download na tab "releases" do projecto no 
+GitHub. <br>
+https://github.com/alexandrepasc/ExerciseAmazon/releases <br>
+<br><br>
 Para correr o exercício deve ter instalado o Java Running Enviornment 8. <br>
 Na linha de comandos executar a linha a baixo.<br>
 <br>
