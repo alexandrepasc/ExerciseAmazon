@@ -4,7 +4,6 @@ import com.ExerciseAmazon.common.Elements;
 import com.ExerciseAmazon.common.PreTest;
 import com.ExerciseAmazon.common.Utils;
 import com.ExerciseAmazon.elements.ItemDetailsPage;
-import com.ExerciseAmazon.elements.LoginPage;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
