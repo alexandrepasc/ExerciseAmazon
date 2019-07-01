@@ -37,22 +37,24 @@ public class CommentsTest extends PreTest {
     Thread.sleep(1000);
     element = new Elements(driver);
 
-    Utils.waitingUntil(driver, ItemDetailsPage.butPopupKindleClose, 25, Utils.WaitUntil.CLICKABLE);
-    element.click(ItemDetailsPage.butPopupKindleClose);
+//    Utils.waitingUntil(driver, ItemDetailsPage.butPopupKindleClose, 25, Utils.WaitUntil.CLICKABLE);
+//    element.click(ItemDetailsPage.butPopupKindleClose);
 
     Utils.scrollToElement(driver, element.getElement(ItemDetailsPage.labelAddReviewTitle));
     element.click(ItemDetailsPage.butAddReview2);
 
-    //element.sendKeys(LoginPage.inputMail, user);
-    for (int i = 0; i < user.length(); i++) {
-      element.sendKeys(LoginPage.inputMail, Character.toString(user.charAt(i)));
-      Thread.sleep(250);
-    }
-    //element.sendKeys(LoginPage.inputPassword, pwd);
-    for (int i = 0; i < pwd.length(); i++) {
-      element.sendKeys(LoginPage.inputPassword, Character.toString(pwd.charAt(i)));
-    }
-    element.click(LoginPage.butLogin);
+    Utils.doLogin(user, pwd, element);
+
+//    //element.sendKeys(LoginPage.inputMail, user);
+//    for (int i = 0; i < user.length(); i++) {
+//      element.sendKeys(LoginPage.inputMail, Character.toString(user.charAt(i)));
+//      Thread.sleep(250);
+//    }
+//    //element.sendKeys(LoginPage.inputPassword, pwd);
+//    for (int i = 0; i < pwd.length(); i++) {
+//      element.sendKeys(LoginPage.inputPassword, Character.toString(pwd.charAt(i)));
+//    }
+//    element.click(LoginPage.butLogin);
   }
 
   @AfterMethod(alwaysRun = true)
