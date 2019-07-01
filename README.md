@@ -1,7 +1,7 @@
 # ExerciseAmazon
 
 Este projeto foi desenvolvido em ambiente Windows, mas está preparado para também correr em Linux. Na descrição está 
-descrito algumas alteraçoes que se deve fazer. <br>
+descrito algumas alteraçoes que se deve fazer. <br><br>
 Para correr o exercício deve ter instalado o Java Running Enviornment 8. <br>
 Na linha de comandos executar a linha a baixo.<br>
 <br>
